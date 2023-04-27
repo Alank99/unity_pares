@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
-public class CheckGround : MonoBehaviour
+public class GroundDettection : MonoBehaviour
 {
-    public controllerplayer daddy;
+    public playerController daddy;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag.Equals("ground")){
