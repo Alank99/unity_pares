@@ -372,6 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 204764755}
   - component: {fileID: 204764757}
+  - component: {fileID: 204764758}
   m_Layer: 0
   m_Name: Chara - BlueIdle00000
   m_TagString: Untagged
@@ -446,6 +447,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &204764758
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204764754}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb0838d2e11e4bd4b8a1568018fae31b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &524777073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1141,7 @@ MonoBehaviour:
   airtimeControlReduction: 0.3
   sensitivity: {x: 4000, y: 0}
   initialPushWhenGrounded: {x: 2, y: 0}
+  playerAnim: {fileID: 0}
   jumpForce: 15
   initialGravity: 3
   finalGravity: 7

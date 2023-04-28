@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour
     public float airtimeControlReduction;
     public Vector2 sensitivity;
     public Vector2 initialPushWhenGrounded;
+    public Animator playerAnim;
 
     [Header("Cosas para el brinco")]
 
@@ -86,11 +87,16 @@ public class playerController : MonoBehaviour
 
         if (movement.x == 0){
             playerRB.velocity = new Vector2(playerRB.velocity.x/2, playerRB.velocity.y);
+            playerAnim.SetBool("isRunning", false);
+        }
+        else{
+            playerAnim.SetBool("isRunning",true);
         }
 
         if (grounded){
             playerRB.velocity = new Vector2(movement.x * initialPushWhenGrounded.x, playerRB.velocity.y);
         }
+
     }
 
     /// <summary>
