@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 204764757}
   - component: {fileID: 204764758}
   m_Layer: 0
-  m_Name: Chara - BlueIdle00000
+  m_Name: sprite del player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,7 +455,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204764754}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cb0838d2e11e4bd4b8a1568018fae31b, type: 2}
   m_CullingMode: 0
@@ -33047,7 +33047,7 @@ Transform:
   m_GameObject: {fileID: 1952761981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 12}
-  m_LocalScale: {x: 1.84, y: 1.79, z: 1}
+  m_LocalScale: {x: 1.99, y: 1.79, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 820908249}
