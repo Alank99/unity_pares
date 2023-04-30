@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -73,9 +74,25 @@ public class playerController : MonoBehaviour
             playerRB.velocity = new Vector2(-maxSpeedX, playerRB.velocity.y);
         }
         
+        // kill the player if it falls from the map:
+        if (transform.position.y < -10){
+            killPlayer();
+        }
     }
 
+    public void killPlayer(){
+        SceneManager.LoadScene(0);
+    }
 
+    public void win(){
+        SceneManager.LoadScene(1);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("End")){
+            win();
+        }
+    }
 
 
     /// <summary>
