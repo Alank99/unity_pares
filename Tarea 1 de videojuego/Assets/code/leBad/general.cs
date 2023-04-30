@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Describes the movement of enemies while they are alive
+by Alejandro Fernández 
+*/
+
 public class general : MonoBehaviour
 {
     [Header("Referencias")]

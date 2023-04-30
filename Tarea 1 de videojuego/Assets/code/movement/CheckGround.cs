@@ -1,6 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+check if it is touching the floor of the map 
+Alan Hernandez
+Alejandro Fernández
+*/
+
+
 public class CheckGround : MonoBehaviour
 {
     public controllerplayer daddy;

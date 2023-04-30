@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+/*
+Describes the movement of player 
+Alejandro Fernández 
+Alan Hernandez
+*/
 
 public class playerController : MonoBehaviour
 {
@@ -21,19 +26,19 @@ public class playerController : MonoBehaviour
     [Header("Cosas para el brinco")]
 
     /// <summary>
-    /// Explica la velocidad que se le aplica al jugador después de presionar brincar
+    /// Explains the speed that is applied to the player after pressing skip
     /// </summary>
     public float jumpForce;
     /// <summary>
-    /// La gravedad que se le va a aplicar cuando precione espacio
+    /// The gravity to be applied when pressing space
     /// </summary>
     public float initialGravity;
     /// <summary>
-    /// La gravedad el resto del tiempo
+    /// Gravity the rest of the time
     /// </summary>
     public float finalGravity;
     /// <summary>
-    /// Cual es el tiempo máximo que el jugador puede brincar 
+    /// What is the maximum time that the player can jump
     /// </summary>
     public float maxJumpTime;
 
@@ -54,7 +59,6 @@ public class playerController : MonoBehaviour
     public void TouchGrass(){
         grounded = true;
         stopJump();
-        Debug.Log("se salto");
     }
     public void StopTouchGrass(){
         grounded = false;
@@ -96,7 +100,7 @@ public class playerController : MonoBehaviour
 
 
     /// <summary>
-    /// Utilizado por el player controller, regresa que tanto esta movido algo
+    /// Used by the player controller, returns how much something has moved
     /// </summary>
     /// <param name="value"></param>
     public void OnMove(InputValue value){
@@ -117,19 +121,19 @@ public class playerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Esta madre se corre asincrona. Se inicia con startCoroutine y termina cuando se sale o stopcoroutine
+    /// runs asynchronously. It starts with startCoroutine and ends when it exits or stopcoroutine.
     /// </summary>
     /// <returns></returns>
     IEnumerator jumpController(){
         jumping = true;
-        // la x se mantiene para que no interferimos con ella
+        // // the x is kept so that we do not interfere with it
         playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
         playerRB.gravityScale = initialGravity;
 
-        // Cálculos generales de tiempo
+        // General time calculations
         var startTime = Time.time;
         elapsed = Time.time - startTime;
-        // relga de 3 para que sepamos que porcentaje llevamos (va de 0 a 1)
+        // 3 relays so that we know what percentage we are carrying (goes from 0 to 1)
         var percentageElapsed = elapsed/maxJumpTime;
 
         var localGravityScale = initialGravity;
@@ -138,11 +142,11 @@ public class playerController : MonoBehaviour
             elapsed = Time.time - startTime;
             percentageElapsed = elapsed/maxJumpTime;
 
-            // vamos a hacer una interpolación lineal de donde estamos, a donde debemos de estar
+            // a linear interpolation is made from where we are to where we should be.
             localGravityScale = Mathf.Lerp(initialGravity, finalGravity, jumpCurve.Evaluate(percentageElapsed)); // el jump curve es para conseguir el y
             playerRB.gravityScale = localGravityScale;
 
-            // Aquí esperamos al siguiente calculo de física
+            // Here we wait for the following physics calculation
             yield return new WaitForFixedUpdate();
         }
 
@@ -152,7 +156,7 @@ public class playerController : MonoBehaviour
 
 
     /// <summary>
-    /// Termina la corutina y baja al personaje
+    /// Finish the coroutine and lower the character.
     /// </summary>
     private void stopJump(){
         StopCoroutine("jumpController");
@@ -160,17 +164,17 @@ public class playerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Se corre cuando se preciona espacio y cuando se termina de precionar
+    /// Runs when space is pressed and when space is completed.
     /// </summary>
     /// <param name="state"></param>
     public void OnJump(InputValue state){
-        if (state.Get<float>() > 0.5f){ // diferencia entre preciona y deja de
-            // Nota: este es cuando se inicia el brinco
+        if (state.Get<float>() > 0.5f){ // difference between press and stop
+            // this is when the leap is initiated
             if (grounded)
                 StartCoroutine("jumpController");
         }
         else{
-            // Aquí es cuando se termina el brinco
+            // This is when the leap ends
             stopJump();
         }
     }
